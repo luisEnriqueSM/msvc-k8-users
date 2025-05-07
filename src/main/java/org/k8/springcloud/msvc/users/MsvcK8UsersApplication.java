@@ -1,4 +1,4 @@
-package org.k8.springcloud.msvc.users.msvc_k8_users;
+package org.k8.springcloud.msvc.users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
