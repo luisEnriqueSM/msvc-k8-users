@@ -40,4 +40,15 @@ public class UserServiceImpl implements UserService{
         userRepository.deleteById(id);
     }
 
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail2(email);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    
 }
