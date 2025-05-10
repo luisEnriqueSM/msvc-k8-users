@@ -2,6 +2,7 @@ package org.k8.springcloud.msvc.users.controllers;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
@@ -81,6 +83,11 @@ public class UserController {
                 return ResponseEntity.noContent().build();
             })
             .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/usuarios-por-curso")
+    public ResponseEntity<?> getUsersByCourse(@RequestParam List<Long> ids){
+        return ResponseEntity.ok().body(userService.findAllById(ids));
     }
 
     private ResponseEntity<?> getErrors(BindingResult result) {

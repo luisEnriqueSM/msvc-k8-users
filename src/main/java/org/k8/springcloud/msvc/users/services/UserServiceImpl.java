@@ -1,5 +1,6 @@
 package org.k8.springcloud.msvc.users.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.k8.springcloud.msvc.users.models.entities.User;
@@ -48,6 +49,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public List<User> findAllById(Iterable<Long> ids) {
+        return (List<User>) userRepository.findAllById(ids);
     }
 
     
