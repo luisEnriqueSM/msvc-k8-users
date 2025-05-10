@@ -86,8 +86,8 @@ public class UserController {
     }
 
     @GetMapping("/usuarios-por-curso")
-    public ResponseEntity<?> getUsersByCourse(@RequestParam List<Long> ids){
-        return ResponseEntity.ok().body(userService.findAllById(ids));
+    public ResponseEntity<?> getUsersByCourse(@RequestParam List<Long> usersIds){
+        return ResponseEntity.ok().body(userService.findAllById(usersIds));
     }
 
     private ResponseEntity<?> getErrors(BindingResult result) {
