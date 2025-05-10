@@ -3,6 +3,7 @@ package org.k8.springcloud.msvc.users.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.k8.springcloud.msvc.users.clients.CourseClientRest;
 import org.k8.springcloud.msvc.users.models.entities.User;
 import org.k8.springcloud.msvc.users.repositories.UserRepository;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService{
 
     private UserRepository userRepository;
+    private CourseClientRest courseClientRest;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, CourseClientRest courseClientRest) {
         this.userRepository = userRepository;
+        this.courseClientRest = courseClientRest;
     }
 
     @Override
@@ -39,6 +42,7 @@ public class UserServiceImpl implements UserService{
     @Transactional
     public void delete(Long id) {
         userRepository.deleteById(id);
+        courseClientRest.deleteCourseUser(id);
     }
 
     @Override
