@@ -52,6 +52,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> findAllById(Iterable<Long> ids) {
         return (List<User>) userRepository.findAllById(ids);
     }
