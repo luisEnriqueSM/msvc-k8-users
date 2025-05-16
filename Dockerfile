@@ -16,4 +16,4 @@ COPY --from=builder /app/msvc-k8-users/target/msvc-k8-users-0.0.1-SNAPSHOT.jar m
 
 EXPOSE 8001
 
-ENTRYPOINT [ "java", "-jar", "msvc-k8-users.jar" ]
+CMD [ "java", "-jar", "msvc-k8-users.jar" ]
