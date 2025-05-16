@@ -12,6 +12,7 @@ RUN ./mvnw clean package -DskipTests
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
+RUN mkdir ./logs
 COPY --from=builder /app/msvc-k8-users/target/msvc-k8-users-0.0.1-SNAPSHOT.jar msvc-k8-users.jar
 
 EXPOSE 8001
