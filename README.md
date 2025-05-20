@@ -5,7 +5,7 @@
 ```bash
 
 # Contenedor MySQL
-docker run -d -p 3306:3306 --network springcloud -v mysql_data_k8:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=sasa1234 -e MYSQL_DATABASE=db_springboot_cloud --name mysql8 mysql:8.0.42
+docker run -d -p 3306:3306 --network springcloud -v mysql_data_k8:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=sasa1234 -e MYSQL_DATABASE=msvc_k8_users --name mysql8 mysql:8.0.42
 
 # Crear imagen
 docker build -t msvc-k8-users:v1 .
