@@ -15,6 +15,7 @@ WORKDIR /app
 RUN mkdir ./logs
 COPY --from=builder /app/msvc-k8-users/target/msvc-k8-users-0.0.1-SNAPSHOT.jar msvc-k8-users.jar
 
-EXPOSE 8001
+ENV PORT=8000
+EXPOSE $PORT
 
 CMD [ "java", "-jar", "msvc-k8-users.jar" ]
