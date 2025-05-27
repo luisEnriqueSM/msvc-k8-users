@@ -20,4 +20,18 @@ docker run -d -p 8001:8001 --name msvc-k8-users --network springcloud --restart=
 docker run -p 8001:8001 --env-file .env -d --rm --name msvc-k8-users --network springcloud msvc-k8-users
 
 # Crear contenedor para msvc-k8-users agregando variable de entorno PORT
-ocker run -p 8001:8089 -d --rm --name msvc-k8-users --network springcloud -e PORT=8089 msvc-k8-users
+docker run -p 8001:8089 -d --rm --name msvc-k8-users --network springcloud -e PORT=8089 msvc-k8-users
+```
+## Integración con otros servicios:
+
+Este servicio se comunica directamente con el servicio msvc-k8-courses:
+####  https://github.com/luisEnriqueSM/msvc-k8-courses
+
+## Docker Hub:
+
+#### luisenriquesm/msvc-k8-users: https://hub.docker.com/repository/docker/luisenriquesm/msvc-k8-users/general
+
+#### luisenriquesm/msvc-k8-courses: https://hub.docker.com/repository/docker/luisenriquesm/msvc-k8-courses/general
+
+## Docker Compose: 
+#### https://github.com/luisEnriqueSM/msvc-k8-docker-compose
