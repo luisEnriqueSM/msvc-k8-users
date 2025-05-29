@@ -22,5 +22,4 @@ ARG PORT_APP=8001
 ENV PORT=$PORT_APP
 EXPOSE $PORT
 
-#CMD [ "java", "-jar", "msvc-k8-users.jar" ]
-CMD sleep 20 && java -jar msvc-k8-users.jar
+CMD [ "java", "-jar", "msvc-k8-users.jar" ]
