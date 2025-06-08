@@ -8,6 +8,8 @@ import java.util.Optional;
 
 import org.k8.springcloud.msvc.users.models.entities.User;
 import org.k8.springcloud.msvc.users.services.UserService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -26,9 +28,16 @@ import jakarta.validation.Valid;
 public class UserController {
 
     private UserService userService;
+    private ApplicationContext context;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ApplicationContext context) {
         this.userService = userService;
+        this.context = context;
+    }
+
+    @GetMapping("/crash")
+    public void crash(){
+        ((ConfigurableApplicationContext)context).close();
     }
 
     @GetMapping
