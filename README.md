@@ -61,3 +61,9 @@ Version to be able to run on AWS ECS without an Startup dependency ordering for 
 OS/ARCH: linux/arm64
 
 The purpose of this version is to cause an app crash to demonstrate K8s is able to restore the pod doing a restart.
+
+#### - [luisenriquesm/msvc-k8-users:v5](https://hub.docker.com/repository/docker/luisenriquesm/msvc-k8-users/tags/v5/sha256:c630909603a71a0a1a5a887c4511de11ebc2483cd9e66e379853b024df9b242e)
+
+OS/ARCH: linux/arm64
+
+This version includes the integration with Spring Cloud Kubernetes. No more hard coded url all are handled by Kubernetes.
