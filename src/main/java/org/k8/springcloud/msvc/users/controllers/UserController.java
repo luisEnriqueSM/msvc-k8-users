@@ -10,6 +10,7 @@ import org.k8.springcloud.msvc.users.models.entities.User;
 import org.k8.springcloud.msvc.users.services.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -29,10 +30,12 @@ public class UserController {
 
     private UserService userService;
     private ApplicationContext context;
+    private Environment env;
 
-    public UserController(UserService userService, ApplicationContext context) {
+    public UserController(UserService userService, ApplicationContext context, Environment environment) {
         this.userService = userService;
         this.context = context;
+        this.env = environment;
     }
 
     @GetMapping("/crash")
@@ -41,8 +44,12 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Iterable<User>> list(){
-        return ResponseEntity.ok().body(userService.findAll());
+    public ResponseEntity<Map<String, Object>> list(){
+        Map<String, Object> body = new HashMap<>();
+        body.put("users", userService.findAll());
+        body.put("pod_Info", env.getProperty("MY_POD_NAME") + " : " + env.getProperty("MY_POD_IP"));
+        body.put("texto", env.getProperty("config.texto"));
+        return ResponseEntity.ok().body(body);
     }
 
     @GetMapping("/{id}")
